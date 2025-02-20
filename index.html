@@ -1,0 +1,363 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script> 
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight:300;
+		font-size:18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+	
+	h1 {
+		font-size:32px;
+		font-weight:300;
+	}
+	
+	td {
+    	width: 20%; /* Equal width for 5 columns, adjust as needed */
+    	text-align: center; /* Centers content within each cell */
+	}
+
+	.demotable {
+    	width: 100%; /* Full width of the parent */
+    	margin: 0 auto; /* Centers the table */
+	}
+
+	audio {
+    	width: 100%; /* Adjust the width as needed */
+    	max-width: 200px; /* Set a maximum width */
+		margin: 5px auto;
+		display: block;
+	}
+
+	.disclaimerbox {
+		background-color: #eee;		
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	a:link,a:visited
+	{
+		color: #1367a7;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #208799;
+	}
+	
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+	
+	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+		15px 15px 0 0px #fff, /* The fourth layer */
+		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+		20px 20px 0 0px #fff, /* The fifth layer */
+		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+		25px 25px 0 0px #fff, /* The fifth layer */
+		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+	
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	hr
+	{
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+<head>
+	<title>StrumStart Dataset</title>
+	<meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="StrumStart: A Dataset of 1-on-1 Guitar Lessons for Speech-Music Co-reasoning" />
+	<meta property="og:description" content="Presents a new dataset benchmarking Speech-Music Co-reasoning." />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script> 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:36px">StrumStart: A Dataset of 1-on-1 Guitar Lessons for Speech-Music Co-reasoning</span>
+		
+	</center>
+
+	<!-- <center>
+		<table align=center width=850px>
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:500px" src="./resources/model_figure.png"/>
+					</center>
+				</td>
+			</tr>
+		</table>
+	</center> -->
+
+	<hr>
+
+	<table align=center width=850px>
+		<center><h1>Abstract</h1></center>
+		<tr>
+			<td>
+                Recent attempts to integrate speech, music, and audio processing into Large Audio Language Models (LALMs) have relied on the combination of large datasets which were typically designed or collected for a particular audio sub-domain. In these datasets, it is often difficult to find data that interacts with multiple domains simultaneously. To help introduce datasets that specifically target co-reasoning abilities across speech, music, and audio, we focus on collaborative-music production as a natural speech-music co-reasoning environment and introduce StrumStart, a collection of ~3.5 hours of 1-on-1 guitar lessons and a preliminary set of question-answering pairs. Furthermore, we evaluate how two Large Audio Language Models (LALMs), LTU and LTU-AS handle speech-music co-reasoning questions derived from the StrumStart dataset, demonstrating that model performance decreases on questions that specifically target Speech-Music Co-reasoning. We end with a discussion of future plans to extend StrumStart as a training dataset through synthetic data generation and additional data collection and labeling. 
+			</td>
+		</tr>
+	</table>
+	<br>
+
+
+
+	<table class="demotable" width=850px>
+		<center><h1>Samples</h1></center>
+		<center><p>Below we provide examples from the StrumStart Dataset. Along with the audio clip and Whisper-generated transcript, we also provide the question and answer that were created for the given audio. Our questions were split into two categories: Speech-Only Reasoning and Speech-Music Co-reasoning. Examples are provided for both categories.
+		</p></center>
+	</table>
+
+	<table>
+		<center><h3>Examples of Speech-Only Reasoning Data Points</h3></center>
+		<tr>
+			<th>Audio Clip</th>
+			<th>Transcript</th>
+			<th>Question</th>
+			<th>Correct Answer</th>
+		</tr>
+		
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul17audio_1.wav" type="audio/wav"></audio></td>
+			<td>And so just go ahead and hit the sixth string first. This will also be a good review. That is the sixth string, yeah. That's good, that one's tuned. Try hitting it a little bit harder. There you go.</td>
+            <td>Based on the dialogue, is the sixth string tuned?</td>
+            <td>Yes, it is correctly tuned.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul17audio_37.wav" type="audio/wav"></audio></td>
+			<td>So we have F on the first fret of the sixth string, G, A, and B. And then on the fifth string, starting on the third fret, we have C, D, and E on the seventh.</td>
+            <td>What is being played on the guitar based on the dialogue?</td>
+            <td>The teacher is playing F, G, A, and B on the sixth string, and then C, D, E on the fifth string.</td>
+		</tr>
+
+        <tr>
+            <td><audio controls><source src="./resources/audios/jul24audio_14.wav" type="audio/wav"></audio></td>
+			<td>We're back to the C, D, E. Where is the C on the third string? Oh, it's on the fourth. The fifth. Or the fifth. That's close. Yeah, B is on the fourth. B is on the fourth, yeah, okay. That is correct. </td>
+            <td>Does the student answer the question correctly?</td>
+            <td>No, the student does not answer correctly.</td>
+		</tr>
+
+        <tr>
+            <td><audio controls><source src="./resources/audios/jul30audio_72.wav" type="audio/wav"></audio></td>
+			<td>So you notice how this sounds different than this. Because the thing that this third string in the E minor is the minor third. So without it, you lose the minor sound. So it's really important with E minor to get that third string to ring out because otherwise you don't have E minor. You just have a power chord. </td>
+            <td>What string is important for making sure an E minor chord is played correctly?</td>
+            <td>The third string is important for the E minor chord.</td>
+		</tr>
+
+        <tr>
+            <td><audio controls><source src="./resources/audios/aug6audio_28.wav" type="audio/wav"></audio></td>
+			<td> And so my question for you is. My question for you is. Why are we using this B7 chord? There's two different answers that we can get rid of. Why are we using this B7 chord here? It like, it sounds like musically nicer with the other one in comparison to using another chord. That's one, yeah. Because when we say musically nicer, it's more about relieving tension. </td>
+            <td>Based on the dialogue, why is the B7 chord used?</td>
+            <td>The B7 chord sounds musically nicer, meaning it relieves tension.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jun25audio_7.wav" type="audio/wav"></audio></td>
+			<td>Yep. You got to make sure that your left hand is off of the strings because otherwise it will be a muted sound. </td>
+            <td>What is the teacher's response to the guitar in the beginning?</td>
+            <td>The teacher says that the student should take off the left hand to avoid a muted sound</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul17audio_35.wav" type="audio/wav"></audio></td>
+			<td>My fingers are colliding now. Versus if we bring it out. If you also notice your middle and ring are on the same finger, or on the same string. There you go. That's good.</td>
+            <td>Based on the teacher's feedback, does the student play correctly?</td>
+            <td>Yes, in the end, the student plays correctly.</td>
+		</tr>
+
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul24audio_19.wav" type="audio/wav"></audio></td>
+			<td>The only reason why I want to like be insistent on learning the fretboard early is that it's just better to know it. Because you don't need to actually like just stick to learning the basic chords, especially since you're familiar with stuff.</td>
+            <td>Based on the dialogue, why is the teacher insistent on the student learning about the fretboard.</td>
+            <td>It can allow the student to go past basic chords.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul30audio_18.wav" type="audio/wav"></audio></td>
+			<td>So where's your thumb right now? It's like, like, just like behind, like the seventh fret. Cool. For me, it's like in between, I always forget what it's called, the knuckle or whatever. For me, it's in between the sixth and the seventh fret with my hand. </td>
+            <td>What is the student's answer to the teacher's question?</td>
+            <td>The student answers that their thumb is behind the seventh fret.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/aug6audio_0.wav" type="audio/wav"></audio></td>
+			<td> Okay, let's go ahead and tune it. Cool, that's easy enough.</td>
+            <td>Why is the guitar being played based on the dialogue?</td>
+            <td>The guitar is being played to make sure it is tuned.</td>
+		</tr>
+	</table>
+
+	<table>
+		<center><h3>Examples of Speech-Music Co-reasoning Data Points</h3></center>
+		<tr>
+			<th>Audio Clip</th>
+			<th>Transcript</th>
+			<th>Question</th>
+			<th>Correct Answer</th>
+		</tr>
+		
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul24audio_63.wav" type="audio/wav"></audio></td>
+			<td>This is an F sharp diminished chord. And the notes that we have in this, the reason why I'm pausing is because we have an F sharp, which, if we were just following along with the exact progression that I was just doing, doesn't make any sense.</td>
+            <td>Is the guitar playing at the end directly related to the dialogue?</td>
+            <td>No, it is not related to the dialogue.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/aug6audio_31.wav" type="audio/wav"></audio></td>
+			<td>Let's go ahead and just, what I want you to do is I just want you to move back and forth between E minor and A minor. Three, four, one, two, three, four, one, two, three, four, one, two. </td>
+            <td>Why is the teacher speaking while the student is playing guitar?</td>
+            <td>The teacher is trying to help the student keep the time and rhythm.</td>
+		</tr>
+
+        <tr>
+            <td><audio controls><source src="./resources/audios/aug6audio_83.wav" type="audio/wav"></audio></td>
+			<td>So let's try making all those ring out. You're not going to want to hit the sixth string because E is not in this chord. I think you're doing the thing right where you're hitting that string below it.</td>
+            <td>Why does the teacher speak while the student is playing?</td>
+            <td>The student is hitting a string below which is incorrect.</td>
+		</tr>
+       
+        <tr>
+            <td><audio controls><source src="./resources/audios/jul17audio_95.wav" type="audio/wav"></audio></td>
+			<td>So that's C. Remember, when you play the note, you want to be right up against the fretboard, so the fret so it rings out. What note is that gonna be? This one starts at C, and then this one is gonna be D. D? Yep. E? Yep. </td>
+            <td>Does the student play every note correctly?</td>
+            <td>Yes, the student plays all three notes correctly.</td>
+		</tr>
+
+        <tr>
+            <td><audio controls><source src="./resources/audios/jun25audio_26.wav" type="audio/wav"></audio></td>
+			<td>Let's try it one more time with just doing fifth to eighth.</td>
+            <td>Based on the dialogue, who is playing the guitar first?</td>
+            <td><Textarea:rows></Textarea:rows>he teacher plays the guitar first and the student plays the same thing second.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jun25audio_27.wav" type="audio/wav"></audio></td>
+			<td>Better</td>
+            <td>Does the student improve?</td>
+            <td>Yes, the student improves.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul17audio_46.wav" type="audio/wav"></audio></td>
+			<td>And the reason we do that is so that we don't touch any of the other strings. Okay, hold on. It's still not ringing out really well. Okay, now it's ringing out. So I think it must be something with my middle finger.</td>
+            <td>Is the student playing correctly consistently?</td>
+            <td>No, the student plays incorrectly and then correctly.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul24audio_17.wav type="audio/wav"></audio></td>
+			<td>a high E, what is the shape, what is the mnemonic that we're going to want to use? I guess it's not a mnemonic, but what's the series of notes that we want to use? Is it like F, G, E, B? Yep. So where is the F on the high E? Also on the first fret? That is correct. So then it's F on the first, G on the third, A on the fifth, and then B on the seventh.</td>
+            <td>Is the student or teacher playing the notes at the end?</td>
+            <td>The student is playing at the end.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/jul30audio_20.wav" type="audio/wav"></audio></td>
+			<td>So you skipped your middle finger. Oh yeah. Does your thumb move at all? It moves like a little bit like, like, like that, but it doesn't move like other directions. You ever take it off the back of the board? Not, not that time, no.</td>
+            <td>Why does the teacher interupt the student's playing in the beginning?</td>
+            <td>The student skipped their middle finger.</td>
+		</tr>
+
+		<tr>
+            <td><audio controls><source src="./resources/audios/aug6audio_16.wav" type="audio/wav"></audio></td>
+			<td>The simple, I believe it was 1, 4, 6, 5 progression, right? So to just go over that again, that was E minor, A minor, and then because we're going to 6, the 6 in E minor is? Um... Is it B? 6 is a major, yeah. 6 is, 6 is a G major.</td>
+            <td>What is the teacher playing during the dialogue?</td>
+            <td>The teacher is playing each of the chords that are mentioned.</td>
+		</tr>
+
+
+
+
+
+	</table>
+
+	<!-- This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a> for a <a href="http://richzhang.github.io/colorization/">colorful</a> ECCV project; the code can be found <a href="https://github.com/richzhang/webpage-template">here</a>. -->
+<br>
+</body>
+</html>
